@@ -5,6 +5,7 @@ import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.apache.http.HttpStatus;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -33,8 +34,8 @@ public class P01_HRWithJsonPath extends HrTestBase {
         //response.prettyPrint();
 
         // Status code 200
-        assertEquals(200,response.statusCode());
-        assertEquals(HttpStatus.SC_OK,response.statusCode());
+        assertEquals(200, response.statusCode());
+        assertEquals(HttpStatus.SC_OK, response.statusCode());
 
 
         JsonPath jsonPath = response.jsonPath();
@@ -53,7 +54,6 @@ public class P01_HRWithJsonPath extends HrTestBase {
         // get me all employees first names whose salary is more than 10000
         List<String> allEmployeesSalaryMoreThan10 = jsonPath.getList("items.findAll {it.salary>=10000}.first_name");
         System.out.println("allEmployeesSalaryMoreThan10 = " + allEmployeesSalaryMoreThan10);
-
 
 
         System.out.println("====================");
@@ -86,4 +86,17 @@ public class P01_HRWithJsonPath extends HrTestBase {
              get all city where their country id is UK
 
       */
+
+
+    @DisplayName("Get All /employees?limit=200 --> JSONPATH ")
+    @Test
+    public void test2() {
+
+        Response response = given().accept(ContentType.JSON)
+                .and() // it increases readablitity
+                .queryParam("limit", 200).
+                when().get("/location");
+
+       // assertEquals(response.);
+    }
 }
