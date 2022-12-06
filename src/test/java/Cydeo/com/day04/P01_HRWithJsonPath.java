@@ -69,4 +69,21 @@ public class P01_HRWithJsonPath extends HrTestBase {
         System.out.println("jsonPath.getString(\"items.min{it.salary}.first_name\") = " + jsonPath.getString("items.min{it.salary}.first_name"));
 
     }
+
+     /*
+
+    TASK
+    Given
+             accept type is application/json
+     When
+             user sends get request to /locaitons
+     Then
+             response status code must be 200
+             content type equals to application/json
+             get the second city with JsonPath
+             get the last city with JsonPath
+             get all country ids
+             get all city where their country id is UK
+
+      */
 }
