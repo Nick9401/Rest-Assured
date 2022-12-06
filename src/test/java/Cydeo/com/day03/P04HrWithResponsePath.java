@@ -1,7 +1,6 @@
-package Cydeo.com.day3;
+package Cydeo.com.day03;
 
 import Cydeo.com.utilities.HrTestBase;
-import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.DisplayName;

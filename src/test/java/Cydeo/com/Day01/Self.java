@@ -1,4 +1,4 @@
-package Cydeo.com.Day1;
+package Cydeo.com.Day01;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;

@@ -1,4 +1,4 @@
-package Cydeo.com.day3;
+package Cydeo.com.day03;
 
 import Cydeo.com.utilities.HrTestBase;
 import io.restassured.http.ContentType;

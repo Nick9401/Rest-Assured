@@ -1,6 +1,5 @@
-package Cydeo.com.day3;
+package Cydeo.com.day03;
 
-import Cydeo.com.utilities.HrTestBase;
 import Cydeo.com.utilities.SpartanTestBase;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;

@@ -1,4 +1,4 @@
-package Cydeo.com.day3;
+package Cydeo.com.day03;
 
 import Cydeo.com.utilities.HrTestBase;
 import io.restassured.path.json.JsonPath;
@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 import static io.restassured.RestAssured.*;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class P06HrWithJsonPath extends HrTestBase {
