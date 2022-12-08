@@ -14,7 +14,7 @@ import java.util.List;
 import static io.restassured.RestAssured.*;
 import static org.junit.jupiter.api.Assertions.*;
 public class P01_HRWithJsonPath extends HrTestBase {
-     /*
+    /*
     Given accept type is application/json
     And query param limit is 200
     When user send request /employees
@@ -55,7 +55,6 @@ public class P01_HRWithJsonPath extends HrTestBase {
         List<String> allEmployeesSalaryMoreThan10 = jsonPath.getList("items.findAll {it.salary>=10000}.first_name");
         System.out.println("allEmployeesSalaryMoreThan10 = " + allEmployeesSalaryMoreThan10);
 
-
         System.out.println("====================");
         // get me all information from response  who has max salary
         System.out.println("jsonPath.getString(\"items.max{it.salary}\") = " + jsonPath.getString("items.max{it.salary}"));
@@ -68,10 +67,9 @@ public class P01_HRWithJsonPath extends HrTestBase {
         System.out.println("====================");
         System.out.println("jsonPath.getString(\"items.min{it.salary}.first_name\") = " + jsonPath.getString("items.min{it.salary}.first_name"));
 
+
     }
-
-     /*
-
+    /*
     TASK
     Given
              accept type is application/json
@@ -84,19 +82,6 @@ public class P01_HRWithJsonPath extends HrTestBase {
              get the last city with JsonPath
              get all country ids
              get all city where their country id is UK
-
       */
 
-
-    @DisplayName("Get All /employees?limit=200 --> JSONPATH ")
-    @Test
-    public void test2() {
-
-        Response response = given().accept(ContentType.JSON)
-                .and() // it increases readablitity
-                .queryParam("limit", 200).
-                when().get("/location");
-
-       // assertEquals(response.);
-    }
 }
