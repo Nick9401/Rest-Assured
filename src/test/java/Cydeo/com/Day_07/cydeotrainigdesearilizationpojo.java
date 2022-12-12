@@ -40,13 +40,13 @@ public class cydeotrainigdesearilizationpojo extends CydeoTrainingTestBase {
             JsonPath jsonPath = given().log().all().accept(ContentType.JSON)
                     .and()
                     .pathParam("id", 2).
-                    when().get("/student/{id}")
+                    when().get("https://api.training.cydeo.com/student/{id}")
                     .then()
                     .statusCode(200)
                             .extract().jsonPath();
 
 
-            Student student = jsonPath.getObject("student[0]",Student.class);
+            Student student = jsonPath.getObject("students[0]",Student.class);
             System.out.println(student);
 
         }

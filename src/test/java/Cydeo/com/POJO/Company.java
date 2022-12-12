@@ -3,12 +3,12 @@ package Cydeo.com.POJO;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
-public class Company {
+
     @Data
     @JsonIgnoreProperties(ignoreUnknown = true)
-    public class company {
+    public class Company {
 
         private String companyName;
         private Address address;
-    }
+
 }
