@@ -7,9 +7,9 @@ import org.junit.jupiter.api.Test;
 
 public class CydeoTrainingTestBase {
 
-   @BeforeAll
+    @BeforeAll
     public static void init(){
-       RestAssured.baseURI="https://api.training.cydeo.com";
+        RestAssured.baseURI="https://api.training.cydeo.com";
    }
 
 }

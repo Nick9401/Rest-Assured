@@ -1,16 +1,32 @@
 package Cydeo.com.day01;
 
+import Cydeo.com.utilities.SpartanTestBase;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.testng.annotations.BeforeClass;
+import io.restassured.path.json.JsonPath;
+import org.junit.jupiter.api.DisplayName;
 
+
+import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+
+import static io.restassured.RestAssured.get;
+import static io.restassured.RestAssured.given;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.hamcrest.MatcherAssert.*;
+import static org.hamcrest.Matchers.*;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Self {
+public class Self extends SpartanTestBase {
 
     @BeforeClass
     public void setUpClass() {
@@ -115,4 +131,79 @@ public class Self {
     Assertions.assertEquals(gender,"Female");
 }
 
+@Test
+    public void test7(){
+
+    Response response = given().accept(ContentType.JSON)
+            .pathParams("id", 11)
+            .when().get(".api/spartans/{id}");
+    assertEquals(response.statusCode(),200);
+    int id = response.path("id");
+    System.out.println("id = " + id);
+
+    JsonPath jsonPath = response.jsonPath();
+
+    int id1 = jsonPath.getInt("id");
+    String name = jsonPath.getString("name");
+    String gender = jsonPath.getString("gender");
+    long phone = jsonPath.getLong("phone");
+
+
 }
+@Test
+    public void test5(){
+        given().accept(ContentType.JSON)
+                .pathParams("id",15)
+                .when().get("/api/spartans/{id}")
+                .then().statusCode(200).and()
+                .assertThat().contentType("application/json");
+}
+
+@Test
+    public void test4(){
+        given().accept(ContentType.JSON)
+                .pathParams("id",15)
+                .when().get("/api/spartans/{id}")
+                .then().assertThat().statusCode(200)
+                .and().assertThat().contentType("application/json")
+                .and().assertThat().body("id", Matchers.equalTo(15),"name",Matchers.equalTo("Meta"),
+    "gender",Matchers.equalTo("Female"),"phone",Matchers.equalTo(1938695106));
+}
+
+@Test
+    public void test6(){
+    Response response= given().accept(ContentType.JSON)
+            .pathParams("id",11)
+            .and().when().get("/api/spartans/{id}");
+
+   Map<String,Object>spartanMap= response.body().as(Map.class);
+    System.out.println("spartanMap = " + spartanMap.get("name"));
+    System.out.println("spartanMap = " + spartanMap.get("id"));
+    System.out.println("spartanMap = " + spartanMap.get("gender"));
+
+}
+
+//deserialization
+
+   @Test
+    public void test8(){
+        Response response = given().accept(ContentType.JSON)
+                .when().get("/api/spartans");
+
+        response.prettyPrint();
+        List<Map<String,Object>> listOfSpaertans = response.body().as(List.class);
+
+        //Print all data of first Spratan
+       System.out.println("listOfSpaertans.get(0) = " + listOfSpaertans.get(0));
+       Map<String,Object> firstSpartan = listOfSpaertans.get(0);
+
+       int counter =1;
+       for(Map<String,Object>map : listOfSpaertans){
+       System.out.println(counter+" - spratan " + map);
+       counter++;
+
+   }
+
+
+
+}}
