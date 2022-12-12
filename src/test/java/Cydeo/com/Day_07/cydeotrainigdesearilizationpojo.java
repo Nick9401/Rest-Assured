@@ -5,9 +5,12 @@ import Cydeo.com.utilities.CydeoTrainingTestBase;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import org.junit.jupiter.api.DisplayName;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
+
 
 import static io.restassured.RestAssured.given;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 public class cydeotrainigdesearilizationpojo extends CydeoTrainingTestBase {
 
@@ -25,29 +28,34 @@ public class cydeotrainigdesearilizationpojo extends CydeoTrainingTestBase {
                 companyName Cydeo
                 street 777 5th Ave
                 zipCode 33222
-
        // Ignore all non necessray fields
-
-
      */
 
+    @DisplayName("GET /student/{id} 2 ")
+    @Test
+    public void test1() {
+
+        JsonPath jsonPath = given().log().all().accept(ContentType.JSON)
+                .and()
+                .pathParam("id", 2).
+                when().get("/student/{id}").
+                then()
+                .statusCode(200)
+                .extract().jsonPath();
+
+        Student student = jsonPath.getObject("students[0]", Student.class);
+
+        System.out.println(student);
 
 
-        @DisplayName("GET /student/{id} 2 ")
-        @Test
-        public void test1() {
+        assertEquals("Mark",student.getFirstName());
+        assertEquals(13,student.getBatch());
+        assertEquals("math",student.getMajor());
 
-            JsonPath jsonPath = given().log().all().accept(ContentType.JSON)
-                    .and()
-                    .pathParam("id", 2).
-                    when().get("https://api.training.cydeo.com/student/{id}")
-                    .then()
-                    .statusCode(200)
-                            .extract().jsonPath();
+        assertEquals("mark@email.com",student.getContact().getEmailAddress());
+        assertEquals("Cydeo",student.getCompany().getCompanyName());
 
+        assertEquals("777 5th Ave",student.getCompany().getAddress().getStreet());
+        assertEquals(33222,student.getCompany().getAddress().getZipCode());
 
-            Student student = jsonPath.getObject("students[0]",Student.class);
-            System.out.println(student);
-
-        }
-    }
+    }}

@@ -6,10 +6,11 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.testng.annotations.BeforeClass;
+
 import io.restassured.path.json.JsonPath;
-import org.junit.jupiter.api.DisplayName;
+
 
 
 import org.junit.jupiter.api.Test;
@@ -28,7 +29,7 @@ import java.util.Map;
 
 public class Self extends SpartanTestBase {
 
-    @BeforeClass
+    @BeforeAll
     public void setUpClass() {
         RestAssured.baseURI = "http://44.204.184.184:8000";
     }
