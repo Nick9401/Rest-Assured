@@ -1,15 +1,11 @@
-package Cydeo.com.Day_07;
+package Cydeo.com.Day07;
 
 import Cydeo.com.POJO.Spartan;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import Cydeo.com.utilities.SpartanTestBase;
 import io.restassured.http.ContentType;
-import io.restassured.path.json.JsonPath;
-import java.util.Map;
-import java.util.HashMap;
+
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;

@@ -1,4 +1,4 @@
-package Cydeo.day06;
+package Cydeo.com.day06;
 
 import io.restassured.path.json.JsonPath;
 import org.junit.jupiter.api.DisplayName;

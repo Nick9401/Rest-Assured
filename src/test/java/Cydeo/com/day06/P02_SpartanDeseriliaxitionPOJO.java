@@ -1,4 +1,4 @@
-package Cydeo.day06;
+package Cydeo.com.day06;
 
 import Cydeo.com.POJO.Search;
 import Cydeo.com.POJO.Spartan;

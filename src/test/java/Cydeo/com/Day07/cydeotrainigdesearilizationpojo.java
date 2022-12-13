@@ -1,4 +1,4 @@
-package Cydeo.com.Day_07;
+package Cydeo.com.Day07;
 
 import Cydeo.com.POJO.Student;
 import Cydeo.com.utilities.CydeoTrainingTestBase;

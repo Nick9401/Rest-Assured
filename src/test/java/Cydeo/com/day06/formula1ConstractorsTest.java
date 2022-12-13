@@ -1,4 +1,4 @@
-package Cydeo.day06;
+package Cydeo.com.day06;
 
 import Cydeo.com.utilities.Driver;
 import io.restassured.http.ContentType;

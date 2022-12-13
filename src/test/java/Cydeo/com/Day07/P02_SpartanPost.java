@@ -1,4 +1,4 @@
-package Cydeo.com.Day_07;
+package Cydeo.com.Day07;
 
 import Cydeo.com.POJO.Spartan;
 import Cydeo.com.utilities.SpartanTestBase;
